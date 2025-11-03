@@ -20,7 +20,7 @@
 
           packages.default = pkgs.stdenv.mkDerivation {
             pname = "dwm";
-            version = "6.4";
+            version = "6.6";
             src = ./src-patched;
 
             buildInputs = with pkgs.xorg; [
