@@ -32,13 +32,13 @@ static const char col_yellow[]      = "#d79921";
 static const char col_orange[]      = "#d65d0e";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_fg3, col_bg2, col_bg2 },
+	[SchemeNorm] = { col_fg3, col_bg, col_bg },
 	[SchemeSel]  = { col_fg0, col_yellow,  col_yellow  },
-	[SchemeStatus]  = { col_fg3, col_bg2,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeStatus]  = { col_fg3, col_bg,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
 	[SchemeTagsSel]  = { col_fg0, col_yellow,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
-	[SchemeTagsNorm]  = { col_fg3, col_bg2,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
-	[SchemeInfoSel]  = { col_fg0, col_bg2,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
-	[SchemeInfoNorm]  = { col_fg3, col_bg2,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
+	[SchemeTagsNorm]  = { col_fg3, col_bg,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+	[SchemeInfoSel]  = { col_fg0, col_bg,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+	[SchemeInfoNorm]  = { col_fg3, col_bg,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 /* tagging */
@@ -112,7 +112,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg2, "-nf", col_fg3, "-sb", col_yellow, "-sf", col_fg0, NULL };
+static const char *dmenucmd[]   = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_bg, "-nf", col_fg3, "-sb", col_yellow, "-sf", col_fg0, NULL };
 static const char *termcmd[]    = { TERMINAL, NULL };
 static const char *browsercmd[] = { BROWSER, NULL };
 static const char *screenshotcmd[] = { SCREENSHOT_TOOL, "gui", "--clipboard" };
