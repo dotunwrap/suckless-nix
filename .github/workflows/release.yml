@@ -2,6 +2,10 @@ name: Release build
 on:
   workflow_dispatch:
     inputs:
+      program:
+        description: Program to release
+        required: true
+        type: string
       version:
         description: Release version (semantic)
         required: true
@@ -30,25 +34,25 @@ jobs:
             substituters = https://cache.nixos.org/ https://nix-community.cachix.org/
             trusted-public-keys = cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY= nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs=
           install_url: https://releases.nixos.org/nix/nix-2.28.0/install
-      - name: Build binary
-        run: nix build
+      - name: Build binaries
+        run: nix build .#${{ inputs.program }}
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
-          name: gabbys-dwm-${{ inputs.version }}
-          path: ./result/bin/dwm
+          name: ${{ inputs.program }}-${{ inputs.version }}
+          path: result/bin/${{ inputs.program }}
       - name: Create and push tag
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git checkout ${{ inputs.branch }}
-          git tag ${{ inputs.version }}
-          git push origin ${{ inputs.version }}
+          git tag ${{ inputs.program }}-${{ inputs.version }}
+          git push origin ${{ inputs.program }}-${{ inputs.version }}
       - name: Create release
         run: |
-          gh release create ${{ inputs.version }} \
-            --title "v${{ inputs.version }}" \
+          gh release create ${{ inputs.program }}-${{ inputs.version }} \
+            --title "${{ inputs.program }} v${{ inputs.version }}" \
             --generate-notes \
-            ./result/bin/dwm
+            result/bin/${{ inputs.program }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

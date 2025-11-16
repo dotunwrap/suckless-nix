@@ -3,9 +3,11 @@ SRC_DIR := "./src"
 OUTPUT_DIR := "./src-patched"
 BACKUP_DIR := "./bkp"
 
-patch:
+patch APP:
   #!/usr/bin/env bash
   set -e
+
+  cd {{APP}}
 
   if [ ! -d "{{OUTPUT_DIR}}" ]; then
     echo "Generating {{OUTPUT_DIR}}..."
@@ -37,7 +39,9 @@ patch:
 
   cp {{OUTPUT_DIR}}/config.def.h {{OUTPUT_DIR}}/config.def.h.orig
 
-restart:
+restart APP:
+  cd {{APP}}
+
   mkdir -p {{BACKUP_DIR}}
   cp {{OUTPUT_DIR}}/config.def.h {{BACKUP_DIR}}
   rm -rf {{OUTPUT_DIR}}

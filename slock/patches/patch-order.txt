@@ -1,0 +1,1 @@
+slock-xresources-20191126-53e56c7.diff
