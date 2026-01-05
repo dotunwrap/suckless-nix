@@ -18,6 +18,14 @@
         {
           formatter = pkgs.nixfmt-tree;
 
+          devShells.default = pkgs.mkShell {
+            packages = builtins.attrValues {
+              inherit (pkgs)
+                gcc
+                ;
+            };
+          }; 
+
           packages = {
             dwm = pkgs.stdenv.mkDerivation {
               pname = "dwm";
