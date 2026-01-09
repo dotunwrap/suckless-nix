@@ -2,6 +2,7 @@ PATCHES_DIR := "./patches"
 SRC_DIR := "./src"
 OUTPUT_DIR := "./src-patched"
 BACKUP_DIR := "./bkp"
+CONFIG_FILE_NAME := "config.def.h"
 
 patch APP:
   #!/usr/bin/env bash
@@ -37,12 +38,15 @@ patch APP:
   rm -f {{OUTPUT_DIR}}/*.rej
   rm -f {{OUTPUT_DIR}}/*.orig
 
-  cp {{OUTPUT_DIR}}/config.def.h {{OUTPUT_DIR}}/config.def.h.orig
+  cp {{OUTPUT_DIR}}/{{CONFIG_FILE_NAME}} {{OUTPUT_DIR}}/{{CONFIG_FILE_NAME}}.orig
 
 restart APP:
+  #!/usr/bin/env bash
+  set -e
+
   cd {{APP}}
 
   mkdir -p {{BACKUP_DIR}}
-  cp {{OUTPUT_DIR}}/config.def.h {{BACKUP_DIR}}
+  cp {{OUTPUT_DIR}}/{{CONFIG_FILE_NAME}} {{BACKUP_DIR}}
   rm -rf {{OUTPUT_DIR}}
-  just patch
+  just --set CONFIG_FILE_NAME {{CONFIG_FILE_NAME}} patch {{APP}}

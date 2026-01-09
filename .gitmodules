@@ -7,3 +7,6 @@
 [submodule "slock/src"]
 	path = slock/src
 	url = https://git.suckless.org/slock
+[submodule "dwmblocks/src"]
+	path = dwmblocks/src
+	url = git@github.com:torrinfail/dwmblocks.git

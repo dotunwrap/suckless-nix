@@ -18,7 +18,7 @@ static const int swallowfloating    = 0;        /* 1 means swallow floating wind
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 
-static const char *fonts[]          = { "monospace:size=10" };
+static const char *fonts[]          = { "MonoLisa Variable:size=10", "Symbols Nerd Font:size=14" };
 static const char dmenufont[]       = "monospace:size=10";
 
 static char normbgcolor[]           = "#282828";

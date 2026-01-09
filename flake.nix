@@ -27,6 +27,29 @@
           }; 
 
           packages = {
+            dwmblocks = pkgs.stdenv.mkDerivation {
+              pname = "dwmblocks";
+              version = "custom";
+              src = ./dwmblocks/src-patched;
+
+              buildInputs = with pkgs.xorg; [
+                libX11
+              ];
+
+              buildPhase = ''
+                make
+              '';
+
+              installPhase = '' 
+                mkdir -p $out/bin/scripts
+                mv dwmblocks $out/bin
+              '';
+
+              meta = {
+                description = "Modular status bar for dwm written in c.";
+                license = pkgs.lib.licenses.isc;
+              };
+            };
             dwm = pkgs.stdenv.mkDerivation {
               pname = "dwm";
               version = "6.6";
