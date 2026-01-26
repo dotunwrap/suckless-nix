@@ -40,9 +40,11 @@
                 make
               '';
 
-              installPhase = '' 
-                mkdir -p $out/bin/scripts
+              installPhase = ''
+                mkdir -p $out/bin
                 mv dwmblocks $out/bin
+                cp battery.sh $out/bin
+                cp weather.sh $out/bin
               '';
 
               meta = {
