@@ -3,6 +3,7 @@
 static const Block blocks[] = {
 	/*Icon*/	/*Command*/		/*Update Interval*/	/*Update Signal*/
 	{"", "battery.sh",	1,		0},
+  {"test:", "test_block", 60, 0}
 	{"", "weather.sh",	1800,		0},
 	{"Mem:", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		0},
 
