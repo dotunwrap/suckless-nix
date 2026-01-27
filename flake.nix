@@ -37,14 +37,13 @@
               ];
 
               buildPhase = ''
-                make
+                make NIXPATH="fwefwf"
               '';
 
               installPhase = ''
-                mkdir -p $out/bin
+                mkdir -p $out/bin/scripts
                 mv dwmblocks $out/bin
-                cp battery.sh $out/bin
-                cp weather.sh $out/bin
+                cp scripts/* $out/bin/scripts
               '';
 
               meta = {
