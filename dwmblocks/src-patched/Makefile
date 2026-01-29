@@ -17,7 +17,7 @@ options:
 	@echo "CC      = ${CC}"
 
 dwmblocks: dwmblocks.c blocks.def.h blocks.h
-	${CC} -DSCRIPT_PATH=/rip/bin/scripts -o dwmblocks dwmblocks.c ${CFLAGS} ${LDFLAGS}
+	${CC} -DSCRIPT_PATH=\"${NIXPATH}/bin/scripts\" -o dwmblocks dwmblocks.c ${CFLAGS} ${LDFLAGS}
 
 blocks.h:
 	cp blocks.def.h $@

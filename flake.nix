@@ -37,7 +37,7 @@
               ];
 
               buildPhase = ''
-                make NIXPATH="fwefwf"
+                make NIXPATH=$out
               '';
 
               installPhase = ''
