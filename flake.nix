@@ -37,12 +37,13 @@
               ];
 
               buildPhase = ''
-                make
+                make NIXPATH=$out
               '';
 
-              installPhase = '' 
+              installPhase = ''
                 mkdir -p $out/bin/scripts
                 mv dwmblocks $out/bin
+                cp scripts/* $out/bin/scripts
               '';
 
               meta = {
