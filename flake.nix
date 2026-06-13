@@ -24,7 +24,7 @@
                 gcc
                 ;
             };
-          }; 
+          };
 
           packages = {
             dwmblocks = pkgs.stdenv.mkDerivation {
@@ -32,8 +32,8 @@
               version = "custom";
               src = ./dwmblocks/src-patched;
 
-              buildInputs = with pkgs.xorg; [
-                libX11
+              buildInputs = with pkgs; [
+                libx11
               ];
 
               buildPhase = ''
@@ -56,10 +56,10 @@
               version = "6.6";
               src = ./dwm/src-patched;
 
-              buildInputs = with pkgs.xorg; [
-                libX11
-                libXft
-                libXinerama
+              buildInputs = with pkgs; [
+                libx11
+                libxft
+                libxinerama
                 libxcb
               ];
 
@@ -82,11 +82,11 @@
               version = "1.6";
               src = ./slock/src-patched;
 
-              buildInputs = with pkgs.xorg; [
-                libX11
-                libXext
-                libXrandr
-                pkgs.libxcrypt
+              buildInputs = with pkgs; [
+                libx11
+                libxext
+                libxrandr
+                libxcrypt
               ];
 
               buildPhase = ''
